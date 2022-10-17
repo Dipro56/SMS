@@ -1,0 +1,17 @@
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\bin\Debug\net6.0\SMS.exe
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\bin\Debug\net6.0\SMS.deps.json
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\bin\Debug\net6.0\SMS.runtimeconfig.json
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\bin\Debug\net6.0\SMS.dll
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\bin\Debug\net6.0\SMS.pdb
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.AssemblyInfoInputs.cache
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.AssemblyInfo.cs
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.csproj.CopyComplete
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.dll
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\refint\SMS.dll
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.pdb
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\SMS.genruntimeconfig.cache
+C:\Users\USER\Documents\Astha IT\Assignments\SMS\obj\Debug\net6.0\ref\SMS.dll
