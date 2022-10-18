@@ -86,7 +86,7 @@ namespace SMS
       Console.WriteLine("Full name: " + firstName + " " + middleName + " " + lastName);
       Console.WriteLine("StudentID: " + studentID);
       Console.WriteLine("Department: " + department);
-      Console.WriteLine("Joining batch: " + joiningBatch.semesterName());
+      Console.WriteLine("Joining batch: " + joiningBatch.semesterCode + " " + joiningBatch.year);
       Console.WriteLine("Semester attended:");
       foreach (Semester item in semesterAttend)
       {
@@ -96,10 +96,13 @@ namespace SMS
       Console.WriteLine("---------------------------------\n");
       foreach (CoursePerSemester item in courseAttendPerSemester)
       {
+        Console.WriteLine("Semester:");
         Console.WriteLine(item.semester.semesterName() + "\n");
+
+        Console.WriteLine("Courses:");
         foreach (Course course in item.courses)
         {
-          Console.WriteLine("Course ID " + course.CourseID + " Course Name " + course.CourseName + " Credit " + course.Credit);
+          Console.WriteLine("ID: " + course.CourseID + " Name: " + course.CourseName + " Credit: " + course.Credit + " Instructor: " + course.getInstructorName());
           // course.CourseDetails();
         }
       }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft;
 using System.Collections.Generic;
+using System.Text.Json;
 
 
 namespace SMS
@@ -9,106 +10,144 @@ namespace SMS
   {
     static void Main(string[] args)
     {
-      // CoursePerSemester cs1 = new CoursePerSemester();
-      // Semester s1 = new Semester();
-      // s1.semesterCode = "test";
-      // s1.year = "2024";
+      // using (StreamReader r = new StreamReader("test.json"))
+      // {
+      //   string json = r.ReadToEnd();
+      //   Console.WriteLine(json);
 
-      // Course c1 = new Course();
-      // c1.CourseID = "1";
-      // c1.CourseName = "MAT101";
-      // c1.setInstructorName("ASS");
-      // c1.Credit = 4;
+      //   Test items = Newtonsoft.Json.JsonConvert.DeserializeObject<Test>(json);
+      //   Console.WriteLine("Items\n");
 
-      // Course c2 = new Course();
-      // c2.CourseID = "2";
-      // c2.CourseName = "MAT121";
-      // c2.setInstructorName("SMC");
-      // c2.Credit = 4;
+      //   // List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+      // }
 
+      //student information
+      Console.WriteLine("Welcome to student management system!!");
+      Console.WriteLine("......................................");
 
+      Console.WriteLine("Options: \n");
+      Console.WriteLine("1.Press 1 to Add student");
+      Console.WriteLine("2.Press 2 to View student");
 
+      // int option = Convert.ToInt32(Console.ReadLine());
+      int option = 2;
 
+      if (option == 1)
+      {
+        Student student1 = new Student();
 
-      Student student1 = new Student();
+        student1.firstName = "Sadat ";
+        student1.middleName = "Shahriar ";
+        student1.lastName = "Bari ";
+        student1.studentID = "170042056";
+        student1.department = Department.English;
+        student1.degree = Degree.MA;
 
-      student1.firstName = "Sadat ";
-      student1.middleName = "Shahriar ";
-      student1.lastName = "Bari ";
-      student1.studentID = "170042056";
-      student1.department = Department.English;
-      student1.degree = Degree.MA;
+        //semester realted stuffs
+        Semester semester1 = new Semester();
+        semester1.semesterCode = "Spring";
+        semester1.year = "2017";
 
-      //semester realted stuffs
-      Semester semester1 = new Semester();
-      semester1.semesterCode = "Spring";
-      semester1.year = "2017";
+        Semester semester2 = new Semester();
+        semester2.semesterCode = "Fall";
+        semester2.year = "2017";
 
-      Semester semester2 = new Semester();
-      semester2.semesterCode = "Fall";
-      semester2.year = "2017";
+        student1.joiningBatch = semester1;
 
-      student1.joiningBatch = semester1;
-
-      student1.semesterAttend.Add(semester1);
-      student1.semesterAttend.Add(semester2);
-
-
-
-
-      //course
-      Course eng1 = new Course();
-      eng1.CourseID = "1";
-      eng1.CourseName = "ENG101";
-      eng1.setInstructorName("ABA");
-      eng1.Credit = 3;
-
-      Course eng2 = new Course();
-      eng2.CourseID = "2";
-      eng2.CourseName = "ENG201";
-      eng2.setInstructorName("AAM");
-      eng2.Credit = 3;
-
-      Course eng3 = new Course();
-      eng3.CourseID = "3";
-      eng3.CourseName = "ENG103";
-      eng3.setInstructorName("ABS");
-      eng3.Credit = 3;
-
-      Course history1 = new Course();
-      history1.CourseID = "4";
-      history1.CourseName = "EL103";
-      history1.setInstructorName("SSB");
-      history1.Credit = 3;
-
-      CoursePerSemester cps1 = new CoursePerSemester();
-      cps1.semester = semester1;
-      cps1.courses.Add(eng1);
-      cps1.courses.Add(eng2);
-      student1.courseAttendPerSemester.Add(cps1);
-
-      CoursePerSemester cps2 = new CoursePerSemester();
-      cps2.semester = semester2;
-      cps2.courses.Add(history1);
-      cps2.courses.Add(eng2);
-      cps2.courses.Add(eng3);
-      student1.courseAttendPerSemester.Add(cps2);
-
-      student1.showStudentDetails();
+        student1.semesterAttend.Add(semester1);
+        student1.semesterAttend.Add(semester2);
 
 
-      // CoursePerSemester courseList1 = new CoursePerSemester();
-      // courseList1.semester = semester1;
-      // courseList1.courses.Add(eng1);
-      // courseList1.courses.Add(history1);
-      // student1.showStudentDetails();
-      // courseList1.showCoursePerSemester();
 
-      // Console.WriteLine("Course semester relation:");
-      // var check = courseList1.test();
-      // Console.WriteLine(check);
-      // Console.WriteLine(returnValue);
-      //courseList1.showCoursePerSemester();
+
+        //course
+        Course eng1 = new Course();
+        eng1.CourseID = "1";
+        eng1.CourseName = "ENG101";
+        eng1.setInstructorName("ABA");
+        eng1.Credit = 3;
+
+        Course eng2 = new Course();
+        eng2.CourseID = "2";
+        eng2.CourseName = "ENG201";
+        eng2.setInstructorName("AAM");
+        eng2.Credit = 3;
+
+        Course eng3 = new Course();
+        eng3.CourseID = "3";
+        eng3.CourseName = "ENG103";
+        eng3.setInstructorName("ABS");
+        eng3.Credit = 3;
+
+        Course history1 = new Course();
+        history1.CourseID = "4";
+        history1.CourseName = "EL103";
+        history1.setInstructorName("SSB");
+        history1.Credit = 3;
+
+        CoursePerSemester cps1 = new CoursePerSemester();
+        cps1.semester = semester1;
+        cps1.courses.Add(eng1);
+        cps1.courses.Add(eng2);
+        student1.courseAttendPerSemester.Add(cps1);
+
+        CoursePerSemester cps2 = new CoursePerSemester();
+        cps2.semester = semester2;
+        cps2.courses.Add(history1);
+        cps2.courses.Add(eng2);
+        cps2.courses.Add(eng3);
+        student1.courseAttendPerSemester.Add(cps2);
+
+        student1.showStudentDetails();
+      }
+
+      else if (option == 2)
+      {
+        Console.WriteLine("\nIn view mode\n");
+
+        using (StreamReader r = new StreamReader("Student.json"))
+        {
+          string json = r.ReadToEnd();
+          Console.WriteLine(json);
+
+          List<Student> studentList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Student>>(json);
+          Console.WriteLine("Student list: \n");
+          foreach (Student student in studentList)
+          {
+            student.showStudentDetails();
+            Console.WriteLine("\n");
+          }
+
+          // List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+        }
+
+        // string text = File.ReadAllText(@"C:\Users\USER\Documents\Astha IT\Assignments\SMS\\Student.json");
+        // var person = new List<Student>();
+        // var person = JsonSerializer.Deserialize<List<Student>>(text);
+        // Console.WriteLine("text", text);
+        // var des = Newtonsoft.Json.JsonConvert.DeserializeObject(text);
+        // Console.WriteLine("Deserial ", des);
+        // using (StreamReader r = new StreamReader("Student.json"))
+        // {
+        //   string json = r.ReadToEnd();
+        //   Console.WriteLine(json);
+        //   dynamic array = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+        //   Console.WriteLine("..........\n", array);
+        //   foreach (var item in array)
+        //   {
+        //     Console.WriteLine("name: ", item.firstName);
+        //   }
+        //   // List<Student> items = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Student>>(json);
+        //   // List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+        // }
+      }
+
+
+      //----------------------------------------
+
+
+
+
 
       //adding course
       // while (true)
