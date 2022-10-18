@@ -39,21 +39,6 @@ namespace SMS
       // coursePerSemester = new List<CoursePerSemester>();
     }
 
-    // public void showCoursePerSemester()
-    // {
-
-    //   Console.WriteLine("Semester batch: " + semester.semesterName());
-
-    //   foreach (Course item in courses)
-    //   {
-    //     Console.WriteLine("Course name: " + item.CourseName);
-    //   }
-
-
-    // }
-
-
-
   }
 
 
@@ -81,11 +66,21 @@ namespace SMS
       courseAttendPerSemester = new List<CoursePerSemester>();
     }
 
+    public void showStudentList()
+    {
+
+      Console.WriteLine(studentID + "    " + firstName + " " + middleName + " " + lastName + "   " + department);
+
+    }
+
+
+
     public void showStudentDetails()
     {
       Console.WriteLine("Full name: " + firstName + " " + middleName + " " + lastName);
       Console.WriteLine("StudentID: " + studentID);
       Console.WriteLine("Department: " + department);
+      Console.WriteLine("Degree: " + degree);
       Console.WriteLine("Joining batch: " + joiningBatch.semesterCode + " " + joiningBatch.year);
       Console.WriteLine("Semester attended:");
       foreach (Semester item in semesterAttend)
@@ -103,16 +98,8 @@ namespace SMS
         foreach (Course course in item.courses)
         {
           Console.WriteLine("ID: " + course.CourseID + " Name: " + course.CourseName + " Credit: " + course.Credit + " Instructor: " + course.getInstructorName());
-          // course.CourseDetails();
         }
       }
-      // foreach (CoursePerSemester item in coursePerSemester)
-      // {
-      //   Console.WriteLine(item);
-      //   Console.WriteLine(item.semester.semesterName());
-      //   item.showCoursePerSemester();
-      //   Console.WriteLine("---------------------------------\n");
-      // }
     }
 
   }

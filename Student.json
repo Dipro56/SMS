@@ -80,51 +80,15 @@
     }]
   },
    {
-    "firstName":"Messi",
-    "middleName":"Shahriar",
-    "lastName":"Bari",
-    "studentID":"170042056",
+    "firstName":"Leonel",
+    "middleName":"Andress",
+    "lastName":"Messi",
+    "studentID":"170042058",
     "joiningBatch":{
       "semesterCode": "Fall",
       "year": "2017"
     },
-    "semesterAttend":[{
-      "semesterCode": "Fall",
-      "year": "2017"
-    },{
-      "semesterCode": "Winter",
-      "year": "2017"
-    },{
-      "semesterCode": "Sprin",
-      "year": "2018"
-    }],
-    "department":"ComputerScience",
-    "degree":"BSC",
-    "courseAttendPerSemester":[{
-      "semester":{
-      "semesterCode": "Fall",
-      "year": "2017"
-    },
-      "courses":[
-        {
-          "CourseID":"1",
-          "CourseName":"CSE110",
-          "InstructorName":"FBA",
-          "Credit":3
-        },
-        {
-          "CourseID":"1",
-          "CourseName":"ENG091",
-          "InstructorName":"AAM",
-          "Credit":3
-        },
-        {
-          "CourseID":"1",
-          "CourseName":"MAT110",
-          "InstructorName":"MMR",
-          "Credit":3
-        }
-      ]
-    }]
+    "department":"English",
+    "degree":"BA"
   }
 ]

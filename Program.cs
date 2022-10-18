@@ -6,31 +6,42 @@ using System.Text.Json;
 
 namespace SMS
 {
+
   class Program
   {
     static void Main(string[] args)
     {
-      // using (StreamReader r = new StreamReader("test.json"))
-      // {
-      //   string json = r.ReadToEnd();
-      //   Console.WriteLine(json);
+      Console.WriteLine("Welcome to student management system!!");
+      Console.WriteLine("......................................\n");
+      //read json data 
+      using (StreamReader r = new StreamReader("Student.json"))
+      {
+        string json = r.ReadToEnd();
+        //Console.WriteLine(json);
 
-      //   Test items = Newtonsoft.Json.JsonConvert.DeserializeObject<Test>(json);
-      //   Console.WriteLine("Items\n");
+        List<Student> studentList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Student>>(json);
+        Console.WriteLine("Student list: \n");
 
-      //   // List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
-      // }
+        Console.WriteLine("StudentID" + "    " + "Full name" + "              Department\n");
+
+        foreach (Student student in studentList)
+        {
+          student.showStudentList();
+          // student.showStudentDetails();
+        }
+        Console.WriteLine("\n");
+      }
 
       //student information
-      Console.WriteLine("Welcome to student management system!!");
-      Console.WriteLine("......................................");
 
       Console.WriteLine("Options: \n");
       Console.WriteLine("1.Press 1 to Add student");
       Console.WriteLine("2.Press 2 to View student");
+      Console.WriteLine("3.Press 3 to Delete student");
+      Console.WriteLine("4.Press 4 to Add semester to student");
 
-      // int option = Convert.ToInt32(Console.ReadLine());
-      int option = 2;
+      int option = Convert.ToInt32(Console.ReadLine());
+      //int option = 2;
 
       if (option == 1)
       {
@@ -104,18 +115,31 @@ namespace SMS
       else if (option == 2)
       {
         Console.WriteLine("\nIn view mode\n");
-
         using (StreamReader r = new StreamReader("Student.json"))
         {
+
+          Console.WriteLine("Give student id: ");
+          String idToSearch = Console.ReadLine(); ;
+          bool foundStudent = false;
+
           string json = r.ReadToEnd();
-          Console.WriteLine(json);
+          // Console.WriteLine(json);
 
           List<Student> studentList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Student>>(json);
           Console.WriteLine("Student list: \n");
           foreach (Student student in studentList)
           {
-            student.showStudentDetails();
-            Console.WriteLine("\n");
+            if (student.studentID == idToSearch)
+            {
+              student.showStudentDetails();
+              foundStudent = true;
+            }
+            if (foundStudent) break;
+          }
+
+          if (foundStudent == false)
+          {
+            Console.WriteLine("No such student found\n");
           }
 
           // List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
