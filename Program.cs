@@ -163,29 +163,18 @@ namespace SMS
           student.showStudentDetails();
 
 
-          //json update 
-
-
           studentList.Add(student);
-          // using (StreamWriter w = new StreamWriter("Student.json"))
-          // {
-          //   var writeData = studentList;
 
-          // }
-          var testJSON = Newtonsoft.Json.JsonConvert.SerializeObject(studentList);
-          File.WriteAllText(@"C:\Users\USER\Documents\Astha IT\Assignments\SMS\\Student.json", testJSON);
+          // var testJSON = Newtonsoft.Json.JsonConvert.SerializeObject(studentList);
+          // File.WriteAllText(@"C:\Users\USER\Documents\Astha IT\Assignments\SMS\\Student.json", testJSON);
+          // Console.WriteLine("String convert: ", Newtonsoft.Json.JsonConvert.SerializeObject(studentList));
 
+          using (StreamWriter writer = new StreamWriter("Student.json"))
+          {
+            var newAddedStudentJSON = Newtonsoft.Json.JsonConvert.SerializeObject(studentList);
+            writer.Write(newAddedStudentJSON);
 
-
-
-
-
-
-
-          Console.WriteLine("String convert: ", Newtonsoft.Json.JsonConvert.SerializeObject(studentList));
-
-
-
+          }
 
           Console.WriteLine("Press 1 to stop");
           Console.WriteLine("Press 2 to continue");
@@ -195,72 +184,6 @@ namespace SMS
           else if (stopAdding == "2") continue;
         }
 
-        //add student mode
-        // Student student1 = new Student();
-
-        // student1.firstName = "Sadat ";
-        // student1.middleName = "Shahriar ";
-        // student1.lastName = "Bari ";
-        // student1.studentID = "170042056";
-        // student1.department = Department.English;
-        // student1.degree = Degree.MA;
-
-        //semester realted stuffs
-        // Semester semester1 = new Semester();
-        // semester1.semesterCode = "Spring";
-        // semester1.year = "2017";
-
-        // Semester semester2 = new Semester();
-        // semester2.semesterCode = "Fall";
-        // semester2.year = "2017";
-
-        // student1.joiningBatch = semester1;
-
-        // student1.semesterAttend.Add(semester1);
-        // student1.semesterAttend.Add(semester2);
-
-
-
-
-        //course
-        // Course eng1 = new Course();
-        // eng1.CourseID = "1";
-        // eng1.CourseName = "ENG101";
-        // eng1.setInstructorName("ABA");
-        // eng1.Credit = 3;
-
-        // Course eng2 = new Course();
-        // eng2.CourseID = "2";
-        // eng2.CourseName = "ENG201";
-        // eng2.setInstructorName("AAM");
-        // eng2.Credit = 3;
-
-        // Course eng3 = new Course();
-        // eng3.CourseID = "3";
-        // eng3.CourseName = "ENG103";
-        // eng3.setInstructorName("ABS");
-        // eng3.Credit = 3;
-
-        // Course history1 = new Course();
-        // history1.CourseID = "4";
-        // history1.CourseName = "EL103";
-        // history1.setInstructorName("SSB");
-        // history1.Credit = 3;
-
-        // CoursePerSemester cps1 = new CoursePerSemester();
-        // cps1.semester = semester1;
-        // cps1.courses.Add(eng1);
-        // cps1.courses.Add(eng2);
-        // student1.courseAttendPerSemester.Add(cps1);
-
-        // CoursePerSemester cps2 = new CoursePerSemester();
-        // cps2.semester = semester2;
-        // cps2.courses.Add(history1);
-        // cps2.courses.Add(eng2);
-        // cps2.courses.Add(eng3);
-        // student1.courseAttendPerSemester.Add(cps2);
-
-        // student1.showStudentDetails();
       }
 
       else if (option == 2)
@@ -293,59 +216,98 @@ namespace SMS
 
 
       }
+      else if (option == 4)
+      {
+        List<Student> studentList = new List<Student>();
+        Console.WriteLine("\nAdd semester mode\n");
+        using (StreamReader r = new StreamReader("Student.json"))
+        {
+          string json = r.ReadToEnd();
+          studentList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Student>>(json);
+          r.Close();
+        }
+
+        Console.WriteLine("Give student id: ");
+        String idToSearch = Console.ReadLine();
+        bool foundStudent = false;
 
 
-      //----------------------------------------
+        foreach (Student student in studentList)
+        {
+          if (student.studentID == idToSearch)
+          {
+            Console.WriteLine("Student found");
+            student.showStudentDetails();
+            Console.WriteLine("\n");
+            string SemesterCode, Year;
+            CoursePerSemester cps = new CoursePerSemester();
+            Semester addedSemester = new Semester();
+            Console.WriteLine("Add semester:\n");
+            Console.WriteLine("Semester code");
+            SemesterCode = Console.ReadLine();
+            Console.WriteLine("Year");
+            Year = Console.ReadLine();
+            addedSemester.semesterCode = SemesterCode;
+            addedSemester.year = Year;
+            student.semesterAttend.Add(addedSemester);
+            cps.semester = addedSemester;
+            Console.WriteLine("Enter number of courses want to add: ");
+            int courseCount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Add course to  semester\n");
+            for (int i = 1; i <= courseCount; i++)
+            {
+              Course addedCourse = new Course();
+              String courseID, courseName, instructorName;
+              int credit;
+
+              Console.WriteLine("Enter course ID:");
+              courseID = Console.ReadLine();
+              Console.WriteLine("Enter course name:");
+              courseName = Console.ReadLine();
+              Console.WriteLine("Enter instructor name:");
+              instructorName = Console.ReadLine();
+              Console.WriteLine("Enter course code:");
+              credit = Convert.ToInt32(Console.ReadLine());
+              addedCourse.CourseID = courseID;
+              addedCourse.CourseName = courseName;
+              addedCourse.setInstructorName(instructorName);
+              addedCourse.Credit = credit;
+              cps.courses.Add(addedCourse);
+            }
+            student.courseAttendPerSemester.Add(cps);
+            foundStudent = true;
+
+            using (StreamWriter writer = new StreamWriter("Student.json"))
+            {
+              var updatedJSON = Newtonsoft.Json.JsonConvert.SerializeObject(studentList);
+              writer.Write(updatedJSON);
+              writer.Close();
+            }
+
+            // var updatedJSON = Newtonsoft.Json.JsonConvert.SerializeObject(studentList);
+            // File.WriteAllText(@"C:\Users\USER\Documents\Astha IT\Assignments\SMS\\Student.json", updatedJSON);
+
+            Console.WriteLine("Data updated :");
+            //update json file
+
+          }
+
+          //debug 
+        }
+        if (foundStudent == false)
+        {
+          Console.WriteLine("No such student found to add semester\n");
+        }
+
+        // Console.WriteLine("All data show :");
+
+        // foreach (Student std in studentList)
+        // {
+        //   std.showStudentDetails();
+        // }
 
 
-
-
-
-      //adding course
-      // while (true)
-      // {
-
-      //   string courseID, courseName, instructorName;
-      //   int credit;
-      //   int stop;
-
-      //   Console.WriteLine("Course ID:");
-      //   courseID = Console.ReadLine();
-      //   Console.WriteLine("\n");
-
-      //   Console.WriteLine("Course name:");
-      //   courseName = Console.ReadLine();
-      //   Console.WriteLine("\n");
-
-      //   Console.WriteLine("Instructor name:");
-      //   instructorName = Console.ReadLine();
-      //   Console.WriteLine("\n");
-
-      //   Console.WriteLine("Course credit:");
-      //   credit = Convert.ToInt32(Console.ReadLine());
-      //   Console.WriteLine("\n");
-
-      //   Course newCourse = new Course();
-      //   newCourse.CourseID = courseID;
-      //   newCourse.CourseName = courseName;
-      //   newCourse.InstructorName = instructorName;
-      //   newCourse.Credit = credit;
-
-
-      //   var courseDataString = newCourse.JsonConvert();
-      //   var courseDataJSON = Newtonsoft.Json.JsonConvert.DeserializeObject(courseDataString);
-
-      //   courseList.Add(courseDataJSON);
-
-      //   Console.WriteLine("Press 0 to stop and 1 to continue ");
-      //   stop = Convert.ToInt32(Console.ReadLine());
-
-      //   if (stop == 0) break;
-      //   else if (stop == 1) continue;
-
-      // }
-
-
+      }
     }
   }
 }
