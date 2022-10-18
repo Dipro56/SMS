@@ -1,0 +1,4 @@
+interface IMode
+{
+  void modeImplement();
+}

@@ -38,13 +38,6 @@ namespace SMS
       Console.Write("Course ID " + CourseID + " Course Name " + CourseName + " Credit " + Credit + "\n");
     }
 
-    // public Course(string CourseID, string CourseName, string InstructionName, int Credit)
-    // {
-    //   this.CourseID = CourseID;
-    //   this.CourseName = CourseName;
-    //   this.InstructorName = InstructionName;
-    //   this.Credit = Credit;
-    // }
 
 
 
@@ -58,16 +51,10 @@ namespace SMS
       course.Add("Credit", Credit);
 
       string courseJSON = Newtonsoft.Json.JsonConvert.SerializeObject(course);
-      // Console.WriteLine(testJSON);
       return courseJSON;
     }
 
-    // public void addCourse()
-    // {
-    //   var courseJSON = Newtonsoft.Json.JsonConvert.DeserializeObject(JsonConvert());
-    //   Console.WriteLine(courseJSON);
-    //   courseData.Add(courseJSON);
-    // }
+
 
 
   }

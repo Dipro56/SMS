@@ -2,6 +2,7 @@ using System;
 using Newtonsoft;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 
 namespace SMS
@@ -59,7 +60,6 @@ namespace SMS
 
 
 
-
     public Student()
     {
       semesterAttend = new List<Semester>();
@@ -97,8 +97,9 @@ namespace SMS
         Console.WriteLine("Courses:");
         foreach (Course course in item.courses)
         {
-          Console.WriteLine("ID: " + course.CourseID + " Name: " + course.CourseName + " Credit: " + course.Credit + " Instructor: " + course.getInstructorName());
+          Console.WriteLine("ID: " + course.CourseID + "   Credit: " + course.Credit + "   Name: " + course.CourseName);
         }
+        Console.WriteLine("---------------------------------\n");
       }
     }
 

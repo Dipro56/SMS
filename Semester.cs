@@ -7,7 +7,6 @@ using System.Collections.Generic;
 namespace SMS
 {
 
-
   class Semester
   {
     public String semesterCode { get; set; }
